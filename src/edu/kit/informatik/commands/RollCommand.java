@@ -30,14 +30,14 @@ public class RollCommand {
      * Simulates the roll of the dice.
      * */
     public void roll() {
-        if (Main.coordinator.getCurrentPhase() == Phase.DICE_PHASE) {
+        if (Main.getCoordinator().getCurrentPhase() == Phase.DICE_PHASE) {
             String[] raw = this.dice.split(" ");
             String[] abbreviation = splitDice(raw[1]);
 
             for (String s : abbreviation) {
-                for (Item i : Variables.items) {
+                for (Item i : Variables.getItems()) {
                     if (s.equals(i.getAbbreviation())) {
-                        Main.coordinator.getCurrentPlayer().getItems().add(i);
+                        Main.getCoordinator().getCurrentPlayer().getItems().add(i);
                     }
                 }
             }

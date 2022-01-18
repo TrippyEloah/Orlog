@@ -11,9 +11,12 @@ import edu.kit.informatik.utils.Variables;
  * @author ubjrb
  * @version 1.0
  * */
-public class IdunsRegeneration {
+public final class IdunsRegeneration {
 
     private IdunsRegeneration() { }
+
+    private static final int four = 4;
+    private static final int two = 2;
 
     /**
      * Active abbility of the godfavor.
@@ -21,41 +24,41 @@ public class IdunsRegeneration {
      * @param owner the owner of the card
      * */
     public static void play(Player owner) {
-        if (owner.getName().equals(Variables.player1.getName())) {
-            GodFavor player1 = Variables.player1.getGodFavor();
+        if (owner.getName().equals(Variables.getPlayer1().getName())) {
+            GodFavor player1 = Variables.getPlayer1().getGodFavor();
 
-            if (Variables.player1.getLifes() != 0) {
-                int heal = 2;
+            if (Variables.getPlayer1().getLifes() != 0) {
+                int heal = two;
                 if (player1.getLevel() == 2) {
-                    heal += 2;
+                    heal += two;
                 } else if (player1.getLevel() == 3) {
-                    heal += 4;
+                    heal += four;
                 }
-                Variables.player1.setLifes(Variables.player1.getLifes() + heal);
+                Variables.getPlayer1().setLifes(Variables.getPlayer1().getLifes() + heal);
             } else {
-                Terminal.print(Variables.player2.getName() + " wins");
+                Terminal.print(Variables.getPlayer2().getName() + " wins");
                 Variables.setRunning(false);
             }
-            Variables.player1.setGodFavor(null);
-            Variables.player1.setGodpower(Variables.player1.getGodpower() - (player1.getCosts()));
+            Variables.getPlayer1().setGodFavor(null);
+            Variables.getPlayer1().setGodpower(Variables.getPlayer1().getGodpower() - (player1.getCosts()));
         } else {
-            GodFavor player2 = Variables.player2.getGodFavor();
+            GodFavor player2 = Variables.getPlayer2().getGodFavor();
 
-            if (Variables.player2.getLifes() != 0) {
-                int heal = 2;
+            if (Variables.getPlayer2().getLifes() != 0) {
+                int heal = two;
                 if (player2.getLevel() == 2) {
-                    heal += 2;
+                    heal += two;
                 } else if (player2.getLevel() == 3) {
-                    heal += 4;
+                    heal += four;
                 }
-                Variables.player2.setLifes(Variables.player1.getLifes() + heal);
+                Variables.getPlayer2().setLifes(Variables.getPlayer1().getLifes() + heal);
             } else {
-                Terminal.print(Variables.player1.getName() + " wins");
+                Terminal.print(Variables.getPlayer1().getName() + " wins");
                 Variables.setRunning(false);
             }
 
-            Variables.player2.setGodFavor(null);
-            Variables.player2.setGodpower(Variables.player2.getGodpower() - (player2.getCosts()));
+            Variables.getPlayer2().setGodFavor(null);
+            Variables.getPlayer2().setGodpower(Variables.getPlayer2().getGodpower() - (player2.getCosts()));
         }
 
     }

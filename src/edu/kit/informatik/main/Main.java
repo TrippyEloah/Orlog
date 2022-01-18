@@ -17,7 +17,7 @@ import edu.kit.informatik.utils.Variables;
  * @author ubjrb
  * @version 1.0
  * */
-public class Main {
+public final class Main {
 
     /**
      * Private constructor, so the Main-Object can´t be accesed.
@@ -29,7 +29,7 @@ public class Main {
     /**
      * Creats an coordinator of the game.
      * */
-    public static GameCoordinator coordinator = new GameCoordinator();
+    private static final GameCoordinator coordinator = new GameCoordinator();
 
     public static void main(String[] args) {
         coordinator.setup();
@@ -59,4 +59,15 @@ public class Main {
             }
         }
     }
+
+    /**
+     * Gets the coordinator.
+     *
+     * @return coordinator
+     * */
+    public static GameCoordinator getCoordinator() {
+        return coordinator;
+    }
 }
+
+

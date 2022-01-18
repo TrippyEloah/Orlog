@@ -32,9 +32,9 @@ public class GodFavorCommand {
     public void pick() {
         String name = getGodfavor(command);
         int level = getLevel(command);
-        if (Main.coordinator.getCurrentPhase() == Phase.GODFAVOR_PHASE) {
-            if (Main.coordinator.getCurrentPlayer().getGodFavor() == null) {
-                Main.coordinator.getCurrentPlayer().setGodFavor(findGodfavor(name, level));
+        if (Main.getCoordinator().getCurrentPhase() == Phase.GODFAVOR_PHASE) {
+            if (Main.getCoordinator().getCurrentPlayer().getGodFavor() == null) {
+                Main.getCoordinator().getCurrentPlayer().setGodFavor(findGodfavor(name, level));
                 Terminal.print("OK");
             } else {
                 Terminal.print(Errors.ERROR_ALLREADY_PICKED.toString());
@@ -59,7 +59,7 @@ public class GodFavorCommand {
     }
 
     private static GodFavor findGodfavor(String name, int level) {
-        for (GodFavor favor : Variables.godFavors) {
+        for (GodFavor favor : Variables.getGodFavors()) {
             if (name.equals(favor.getAbbreviation())) {
                 if (level == favor.getLevel()) {
                     return favor;

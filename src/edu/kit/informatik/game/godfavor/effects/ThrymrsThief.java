@@ -10,7 +10,7 @@ import edu.kit.informatik.utils.Variables;
  * @author ubjrb
  * @version 1.0
  * */
-public class ThrymrsThief {
+public final class ThrymrsThief {
 
     private ThrymrsThief() { }
 
@@ -20,40 +20,40 @@ public class ThrymrsThief {
      * @param owner the owner of the card
      * */
     public static void play(Player owner) {
-        if (owner.getName().equals(Variables.player1.getName())) {
-            GodFavor player1 = Variables.player1.getGodFavor();
-            if (Variables.player2.getGodFavor() != null) {
-                GodFavor help = Variables.player2.getGodFavor();
+        if (owner.getName().equals(Variables.getPlayer1().getName())) {
+            GodFavor player1 = Variables.getPlayer1().getGodFavor();
+            if (Variables.getPlayer2().getGodFavor() != null) {
+                GodFavor help = Variables.getPlayer2().getGodFavor();
                 int lvl = help.getLevel() - player1.getLevel();
-                if (lvl != 0) {
-                    for (GodFavor f : Variables.godFavors) {
-                        if (f.getName().equals(help.getName()) && f.getLevel() == lvl) {
-                            Variables.player2.setGodFavor(f);
-                        }
-                    }
-                } else {
-                    Variables.player2.setGodFavor(null);
-                }
+                Variables.getPlayer2().setGodFavor(findGodFavor(help, lvl));
+            } else {
+                Variables.getPlayer2().setGodFavor(null);
             }
-            Variables.player1.setGodFavor(null);
-            Variables.player1.setGodpower(Variables.player1.getGodpower() - (player1.getCosts()));
+            Variables.getPlayer1().setGodFavor(null);
+            Variables.getPlayer1().setGodpower(Variables.getPlayer1().getGodpower() - (player1.getCosts()));
         } else {
-            GodFavor player2 = Variables.player2.getGodFavor();
-            if (Variables.player1.getGodFavor() != null) {
-                GodFavor help = Variables.player1.getGodFavor();
+            GodFavor player2 = Variables.getPlayer2().getGodFavor();
+            if (Variables.getPlayer1().getGodFavor() != null) {
+                GodFavor help = Variables.getPlayer1().getGodFavor();
                 int lvl = help.getLevel() - player2.getLevel();
-                if (lvl != 0) {
-                    for (GodFavor f : Variables.godFavors) {
-                        if (f.getName().equals(help.getName()) && f.getLevel() == lvl) {
-                            Variables.player1.setGodFavor(f);
-                        }
-                    }
-                } else {
-                    Variables.player1.setGodFavor(null);
+                Variables.getPlayer1().setGodFavor(findGodFavor(help, lvl));
+            } else {
+                Variables.getPlayer1().setGodFavor(null);
+            }
+
+            Variables.getPlayer2().setGodFavor(null);
+            Variables.getPlayer2().setGodpower(Variables.getPlayer2().getGodpower() - (player2.getCosts()));
+        }
+    }
+
+    private static GodFavor findGodFavor(GodFavor help, int lvl) {
+        if (lvl != 0) {
+            for (GodFavor f : Variables.getGodFavors()) {
+                if (f.getName().equals(help.getName()) && f.getLevel() == lvl) {
+                    return f;
                 }
             }
-            Variables.player2.setGodFavor(null);
-            Variables.player2.setGodpower(Variables.player2.getGodpower() - (player2.getCosts()));
         }
+        return null;
     }
 }

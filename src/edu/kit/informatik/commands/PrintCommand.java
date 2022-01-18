@@ -20,10 +20,10 @@ public class PrintCommand {
      * Prints the players.
      * */
     public void print() {
-        String player1 = Variables.player1.getName() + ";" + Variables.player1.getLifes() + ";"
-                + Variables.player1.getGodpower();
-        String player2 = Variables.player2.getName() + ";" + Variables.player2.getLifes() + ";"
-                + Variables.player2.getGodpower();
+        String player1 = Variables.getPlayer1().getName() + ";" + Variables.getPlayer1().getLifes() + ";"
+                + Variables.getPlayer1().getGodpower();
+        String player2 = Variables.getPlayer2().getName() + ";" + Variables.getPlayer2().getLifes() + ";"
+                + Variables.getPlayer2().getGodpower();
         Terminal.print(player1);
         Terminal.print(player2);
     }

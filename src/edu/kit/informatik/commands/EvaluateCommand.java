@@ -33,56 +33,56 @@ public class EvaluateCommand {
         evalItems();
         evalLifes();
 
-        Variables.player1.getItems().clear();
-        Variables.player2.getItems().clear();
-        Variables.player1.setGodFavor(null);
-        Variables.player2.setGodFavor(null);
+        Variables.getPlayer1().getItems().clear();
+        Variables.getPlayer2().getItems().clear();
+        Variables.getPlayer1().setGodFavor(null);
+        Variables.getPlayer2().setGodFavor(null);
     }
 
     private static void evalGodFavor() {
-        GodFavor player1 = Variables.player1.getGodFavor();
-        GodFavor player2 = Variables.player2.getGodFavor();
+        GodFavor player1 = Variables.getPlayer1().getGodFavor();
+        GodFavor player2 = Variables.getPlayer2().getGodFavor();
 
         if (player1 != null && player1.getAbbreviation().equals("TT")) {
-            if (Variables.player1.getGodpower() >= player1.getCosts()) ThrymrsThief.play(Variables.player1);
+            if (Variables.getPlayer1().getGodpower() >= player1.getCosts()) ThrymrsThief.play(Variables.getPlayer1());
         } else if (player2 != null && player2.getName().equals("TT")) {
-            if (Variables.player2.getGodpower() >= player2.getCosts()) ThrymrsThief.play(Variables.player2);
+            if (Variables.getPlayer2().getGodpower() >= player2.getCosts()) ThrymrsThief.play(Variables.getPlayer1());
         } else if (player1 != null && player1.getAbbreviation().equals("TS")) {
-            if (Variables.player1.getGodpower() >= player1.getCosts()) ThorsLightning.play(Variables.player1);
+            if (Variables.getPlayer1().getGodpower() >= player1.getCosts()) ThorsLightning.play(Variables.getPlayer1());
         } else if (player2 != null && player2.getAbbreviation().equals("TS")) {
-            if (Variables.player2.getGodpower() >= player2.getCosts()) ThorsLightning.play(Variables.player2);
+            if (Variables.getPlayer2().getGodpower() >= player2.getCosts()) ThorsLightning.play(Variables.getPlayer2());
         } else if (player1 != null && player1.getAbbreviation().equals("IR")) {
-            if (Variables.player1.getGodpower() >= player1.getCosts()) IdunsRegeneration.play(Variables.player1);
+            if (Variables.getPlayer1().getGodpower() >= player1.getCosts()) IdunsRegeneration.play(Variables.getPlayer1());
         } else if (player2 != null && player2.getAbbreviation().equals("IR")) {
-            if (Variables.player2.getGodpower() >= player2.getCosts()) IdunsRegeneration.play(Variables.player2);
+            if (Variables.getPlayer2().getGodpower() >= player2.getCosts()) IdunsRegeneration.play(Variables.getPlayer2());
         }
     }
 
     private static void evalGodPower() {
-        for (Item i : Variables.player1.getItems()) {
+        for (Item i : Variables.getPlayer1().getItems()) {
             if (i.hasGodpower()) {
-                Variables.player1.setGodpower(Variables.player1.getGodpower() + 1);
+                Variables.getPlayer1().setGodpower(Variables.getPlayer1().getGodpower() + 1);
             }
         }
-        for (Item i : Variables.player2.getItems()) {
+        for (Item i : Variables.getPlayer2().getItems()) {
             if (i.hasGodpower()) {
-                Variables.player2.setGodpower(Variables.player2.getGodpower() + 1);
+                Variables.getPlayer2().setGodpower(Variables.getPlayer2().getGodpower() + 1);
             }
         }
     }
 
     private static void evalLifes() {
-        if (Variables.player1.getLifes() != 0 && Variables.player2.getLifes() != 0) {
-            String player1 = Variables.player1.getName() + ";" + Variables.player1.getLifes() + ";"
-                    + Variables.player1.getGodpower();
-            String player2 = Variables.player2.getName() + ";" + Variables.player2.getLifes() + ";"
-                    + Variables.player2.getGodpower();
+        if (Variables.getPlayer1().getLifes() != 0 && Variables.getPlayer2().getLifes() != 0) {
+            String player1 = Variables.getPlayer1().getName() + ";" + Variables.getPlayer1().getLifes() + ";"
+                    + Variables.getPlayer1().getGodpower();
+            String player2 = Variables.getPlayer2().getName() + ";" + Variables.getPlayer2().getLifes() + ";"
+                    + Variables.getPlayer2().getGodpower();
             Terminal.print(player1);
             Terminal.print(player2);
-        } else if (Variables.player1.getLifes() == 0) {
-            Terminal.print(Variables.player2.getName() + " wins");
-        } else if (Variables.player2.getLifes() == 0) {
-            Terminal.print(Variables.player1.getName() + " wins");
+        } else if (Variables.getPlayer1().getLifes() == 0) {
+            Terminal.print(Variables.getPlayer2().getName() + " wins");
+        } else if (Variables.getPlayer2().getLifes() == 0) {
+            Terminal.print(Variables.getPlayer1().getName() + " wins");
         }
     }
 
@@ -96,7 +96,7 @@ public class EvaluateCommand {
         int p2blockedMeeleDmg = 0;
         int p2blockedRangedDmg = 0;
 
-        for (Item i : Variables.player1.getItems()) {
+        for (Item i : Variables.getPlayer1().getItems()) {
             if (i.getDamagetype() == Damagetype.MEELE_DAMAGE) {
                 p1meeleDmg++;
             } else if (i.getDamagetype() == Damagetype.RANGED_DAMAGE) {
@@ -106,13 +106,13 @@ public class EvaluateCommand {
             } else if (i.getDamagetype() == Damagetype.BLOCK_RANGED_DAMAGE) {
                 p1blockedRangedDmg++;
             } else {
-                if (Variables.player2.getGodpower() >= 1) {
-                    Variables.player2.setGodpower(Variables.player2.getGodpower() - 1);
-                    Variables.player1.setGodpower(Variables.player1.getGodpower() + 1);
+                if (Variables.getPlayer2().getGodpower() >= 1) {
+                    Variables.getPlayer2().setGodpower(Variables.getPlayer2().getGodpower() - 1);
+                    Variables.getPlayer1().setGodpower(Variables.getPlayer1().getGodpower() + 1);
                 }
             }
         }
-        for (Item i : Variables.player2.getItems()) {
+        for (Item i : Variables.getPlayer2().getItems()) {
             if (i.getDamagetype() == Damagetype.MEELE_DAMAGE) {
                 p2meeleDmg++;
             } else if (i.getDamagetype() == Damagetype.RANGED_DAMAGE) {
@@ -122,9 +122,9 @@ public class EvaluateCommand {
             } else if (i.getDamagetype() == Damagetype.BLOCK_RANGED_DAMAGE) {
                 p2blockedRangedDmg++;
             } else {
-                if (Variables.player1.getGodpower() >= 1) {
-                    Variables.player1.setGodpower(Variables.player1.getGodpower() - 1);
-                    Variables.player2.setGodpower(Variables.player2.getGodpower() + 1);
+                if (Variables.getPlayer1().getGodpower() >= 1) {
+                    Variables.getPlayer1().setGodpower(Variables.getPlayer1().getGodpower() - 1);
+                    Variables.getPlayer2().setGodpower(Variables.getPlayer2().getGodpower() + 1);
                 }
             }
         }
@@ -136,10 +136,10 @@ public class EvaluateCommand {
         if (p2meeleDmg > p1blockedMeeleDmg) p2TotalDmg += (p2meeleDmg - p1blockedMeeleDmg);
         if (p2rangedDmg > p1blockedRangedDmg) p2TotalDmg += (p2rangedDmg - p1blockedRangedDmg);
 
-        int newLifesP1 = Variables.player1.getLifes() - p2TotalDmg;
-        int newLifesP2 = Variables.player2.getLifes() - p1TotalDmg;
+        int newLifesP1 = Variables.getPlayer1().getLifes() - p2TotalDmg;
+        int newLifesP2 = Variables.getPlayer2().getLifes() - p1TotalDmg;
 
-        Variables.player1.setLifes(newLifesP1);
-        Variables.player2.setLifes(newLifesP2);
+        Variables.getPlayer1().setLifes(newLifesP1);
+        Variables.getPlayer2().setLifes(newLifesP2);
     }
 }

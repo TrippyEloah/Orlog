@@ -15,11 +15,22 @@ import edu.kit.informatik.utils.Variables;
  * */
 public class GameCoordinator {
 
+    private static final int four = 4;
+    private static final int six = 6;
+    private static final int seven = 7;
+    private static final int eight = 8;
+    private static final int nine = 9;
+    private static final int ten = 10;
+    private static final int twelve = 12;
+
     private Player currentPlayer;
     private Phase currentPhase;
 
+    /**
+     * Gamecoordinator-object.
+     * */
     public GameCoordinator() {
-        this.currentPlayer = Variables.player1;
+        this.currentPlayer = Variables.getPlayer1();
         this.currentPhase = Phase.DICE_PHASE;
     }
 
@@ -27,25 +38,25 @@ public class GameCoordinator {
      * Adds all Items and godfavors.
      * */
     public void setup() {
-        Variables.items.add(new Item("Axt", "MA", Damagetype.MEELE_DAMAGE, false));
-        Variables.items.add(new Item("Helm", "MD", Damagetype.BLOCK_MEELE_DAMAGE, false));
-        Variables.items.add(new Item("Götterkraft Helm", "GMD", Damagetype.BLOCK_MEELE_DAMAGE, true));
-        Variables.items.add(new Item("Bogen", "RA", Damagetype.RANGED_DAMAGE, false));
-        Variables.items.add(new Item("Götterkraft Bogen", "GRA", Damagetype.RANGED_DAMAGE, true));
-        Variables.items.add(new Item("Schild", "RD", Damagetype.BLOCK_RANGED_DAMAGE, false));
-        Variables.items.add(new Item("Götterkraft Schild", "GRD", Damagetype.BLOCK_RANGED_DAMAGE, true));
-        Variables.items.add(new Item("Stehlen", "ST", Damagetype.NOTHING, false));
-        Variables.items.add(new Item("Götterkraft Stehlen", "GST", Damagetype.NOTHING, true));
+        Variables.getItems().add(new Item("Axt", "MA", Damagetype.MEELE_DAMAGE, false));
+        Variables.getItems().add(new Item("Helm", "MD", Damagetype.BLOCK_MEELE_DAMAGE, false));
+        Variables.getItems().add(new Item("Götterkraft Helm", "GMD", Damagetype.BLOCK_MEELE_DAMAGE, true));
+        Variables.getItems().add(new Item("Bogen", "RA", Damagetype.RANGED_DAMAGE, false));
+        Variables.getItems().add(new Item("Götterkraft Bogen", "GRA", Damagetype.RANGED_DAMAGE, true));
+        Variables.getItems().add(new Item("Schild", "RD", Damagetype.BLOCK_RANGED_DAMAGE, false));
+        Variables.getItems().add(new Item("Götterkraft Schild", "GRD", Damagetype.BLOCK_RANGED_DAMAGE, true));
+        Variables.getItems().add(new Item("Stehlen", "ST", Damagetype.NOTHING, false));
+        Variables.getItems().add(new Item("Götterkraft Stehlen", "GST", Damagetype.NOTHING, true));
 
-        Variables.godFavors.add(new GodFavor("Thor`s Blitz", "TS", 1, 4, "2 Damage"));
-        Variables.godFavors.add(new GodFavor("Thor`s Blitz", "TS", 2, 8, "5 Damage"));
-        Variables.godFavors.add(new GodFavor("Thor`s Blitz", "TS", 3, 12, "8 Damage"));
-        Variables.godFavors.add(new GodFavor("Thrymr`s Diebstahl", "TT", 1, 3, "-1 godfavor level"));
-        Variables.godFavors.add(new GodFavor("Thrymr`s Diebstahl", "TT", 2, 6, "-2 godfavor level"));
-        Variables.godFavors.add(new GodFavor("Thrymr`s Diebstahl", "TT", 3, 9, "-3 godfavor level"));
-        Variables.godFavors.add(new GodFavor("Idun`s Regeneration", "IR", 1, 4, "2 lifes"));
-        Variables.godFavors.add(new GodFavor("Idun`s Regeneration", "IR", 2, 7, "4 lifes"));
-        Variables.godFavors.add(new GodFavor("Idun`s Regeneration", "IR", 3, 10, "6 lifes"));
+        Variables.getGodFavors().add(new GodFavor("Thor`s Blitz", "TS", 1, four, "2 Damage"));
+        Variables.getGodFavors().add(new GodFavor("Thor`s Blitz", "TS", 2, eight, "5 Damage"));
+        Variables.getGodFavors().add(new GodFavor("Thor`s Blitz", "TS", 3, twelve, "8 Damage"));
+        Variables.getGodFavors().add(new GodFavor("Thrymr`s Diebstahl", "TT", 1, 3, "-1 godfavor level"));
+        Variables.getGodFavors().add(new GodFavor("Thrymr`s Diebstahl", "TT", 2, six, "-2 godfavor level"));
+        Variables.getGodFavors().add(new GodFavor("Thrymr`s Diebstahl", "TT", 3, nine, "-3 godfavor level"));
+        Variables.getGodFavors().add(new GodFavor("Idun`s Regeneration", "IR", 1, four, "2 lifes"));
+        Variables.getGodFavors().add(new GodFavor("Idun`s Regeneration", "IR", 2, seven, "4 lifes"));
+        Variables.getGodFavors().add(new GodFavor("Idun`s Regeneration", "IR", 3, ten, "6 lifes"));
     }
 
     /**
@@ -55,16 +66,16 @@ public class GameCoordinator {
      * */
     public void start(String input) {
         String[] args = input.split(";");
-        Variables.player1.setName(args[0]);
-        Variables.player2.setName(args[1]);
+        Variables.getPlayer1().setName(args[0]);
+        Variables.getPlayer2().setName(args[1]);
         if (args[2].matches("[0-9]*") ) {
             int lifes = Integer.parseInt(args[2]);
             if (lifes < 5) {
                 Terminal.print(Errors.ERROR_LIFES_TO_LOW.toString());
                 Variables.setRunning(false);
             }
-            Variables.player1.setLifes(lifes);
-            Variables.player2.setLifes(lifes);
+            Variables.getPlayer1().setLifes(lifes);
+            Variables.getPlayer2().setLifes(lifes);
         }
         if (args[3].matches("[0-9]*") ) {
             int godfavor = Integer.parseInt(args[3]);
@@ -72,8 +83,8 @@ public class GameCoordinator {
                 Terminal.print(Errors.ERROR_GODPOWER_TO_LOW.toString());
                 Variables.setRunning(false);
             }
-            Variables.player1.setGodpower(godfavor);
-            Variables.player2.setGodpower(godfavor);
+            Variables.getPlayer1().setGodpower(godfavor);
+            Variables.getPlayer2().setGodpower(godfavor);
         }
 
     }

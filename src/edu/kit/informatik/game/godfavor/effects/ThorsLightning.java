@@ -10,9 +10,11 @@ import edu.kit.informatik.utils.Variables;
  * @author ubjrb
  * @version 1.0
  * */
-public class ThorsLightning {
+public final class ThorsLightning {
 
     private ThorsLightning() { }
+
+    private static final int six = 6;
 
     /**
      * Active abbility of the godfavor.
@@ -20,33 +22,33 @@ public class ThorsLightning {
      * @param owner the owner of the card
      * */
     public static void play(Player owner) {
-        if (owner.getName().equals(Variables.player1.getName())) {
-            GodFavor player1 = Variables.player1.getGodFavor();
+        if (owner.getName().equals(Variables.getPlayer1().getName())) {
+            GodFavor player1 = Variables.getPlayer1().getGodFavor();
 
             int damage = 2;
             if (player1.getLevel() == 2) {
                 damage += 3;
             } else if (player1.getLevel() == 3) {
-                damage += 6;
+                damage += six;
             }
-            int newLife = Variables.player2.getLifes() - damage;
+            int newLife = Variables.getPlayer2().getLifes() - damage;
 
-            Variables.player2.setLifes(newLife);
-            Variables.player1.setGodFavor(null);
-            Variables.player1.setGodpower(Variables.player1.getGodpower() - (player1.getCosts()));
+            Variables.getPlayer2().setLifes(newLife);
+            Variables.getPlayer1().setGodFavor(null);
+            Variables.getPlayer1().setGodpower(Variables.getPlayer1().getGodpower() - (player1.getCosts()));
         } else {
-            GodFavor player2 = Variables.player2.getGodFavor();
+            GodFavor player2 = Variables.getPlayer2().getGodFavor();
             int damage = 2;
             if (player2.getLevel() == 2) {
                 damage += 3;
             } else if (player2.getLevel() == 3) {
-                damage += 6;
+                damage += six;
             }
-            int newLife = Variables.player1.getLifes() - damage;
+            int newLife = Variables.getPlayer1().getLifes() - damage;
 
-            Variables.player1.setLifes(newLife);
-            Variables.player2.setGodFavor(null);
-            Variables.player2.setGodpower(Variables.player2.getGodpower() - (player2.getCosts()));
+            Variables.getPlayer1().setLifes(newLife);
+            Variables.getPlayer2().setGodFavor(null);
+            Variables.getPlayer2().setGodpower(Variables.getPlayer2().getGodpower() - (player2.getCosts()));
         }
 
     }
