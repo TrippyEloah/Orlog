@@ -15,13 +15,13 @@ public enum CommandRegex {
     /**
      * Command regex for the roll-command.
      * */
-    COMMAND_ROLL("roll (MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);" +
-            "(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);" +
-            "(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST)"),
+    COMMAND_ROLL("roll (MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);"
+            + "(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST);"
+            + "(MA|MD|GMD|RA|GRA|RD|GRD|ST|GST)"),
     /**
      * Command regex for the trun-command.
      * */
-    COMMAND_TURN("trun"),
+    COMMAND_TURN("turn"),
     /**
      * Command regex for the godfavor-command.
      * */

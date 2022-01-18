@@ -49,7 +49,7 @@ public final class Terminal {
      * @return String array with the values
      * */
     public static String[] extractValues(String command) {
-        return command.split( " ");
+        return command.split(" ");
     }
 
 

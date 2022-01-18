@@ -39,9 +39,8 @@ public enum Errors {
     /**
      * Specific error, not enough Godpower to play.
      * */
-    ERROR_CARD_COSTS_TO_MUCH("you cant afford the godfavor."),
+    ERROR_CARD_COSTS_TO_MUCH("you cant afford the godfavor.");
 
-    ;
 
     private final String error;
 

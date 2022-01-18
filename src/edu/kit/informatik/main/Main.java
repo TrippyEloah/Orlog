@@ -4,6 +4,7 @@ import edu.kit.informatik.commands.GodFavorCommand;
 import edu.kit.informatik.commands.PrintCommand;
 import edu.kit.informatik.commands.RollCommand;
 import edu.kit.informatik.commands.TurnCommand;
+import edu.kit.informatik.commands.EvaluateCommand;
 import edu.kit.informatik.game.GameCoordinator;
 import edu.kit.informatik.messages.Errors;
 import edu.kit.informatik.utils.CommandRegex;
@@ -21,10 +22,10 @@ public class Main {
     /**
      * Private constructor, so the Main-Object can´t be accesed.
      * */
-    private Main() {}
+    private Main() { }
 
-    private static final PrintCommand printCommand = new PrintCommand();
-    private static final TurnCommand turnCommand = new TurnCommand();
+    private static final PrintCommand PRINTCOMMAND = new PrintCommand();
+    private static final TurnCommand TURNCOMMAND = new TurnCommand();
     /**
      * Creats an coordinator of the game.
      * */
@@ -40,14 +41,15 @@ public class Main {
             if (input.matches(CommandRegex.COMMAND_QUIT.toString())) {
                 Variables.setRunning(false);
             } else if (input.matches(CommandRegex.COMMAND_PRINT.toString())) {
-                printCommand.print();
+                PRINTCOMMAND.print();
             } else if (input.matches(CommandRegex.COMMAND_ROLL.toString())) {
                 RollCommand rollCommand = new RollCommand(input);
                 rollCommand.roll();
             } else if (input.matches(CommandRegex.COMMAND_EVALUATE.toString())) {
-
+                EvaluateCommand evaluateCommand = new EvaluateCommand();
+                evaluateCommand.evaluate();
             } else if (input.matches(CommandRegex.COMMAND_TURN.toString())) {
-                turnCommand.turn();
+                TURNCOMMAND.turn();
             } else if (input.matches(CommandRegex.COMMAND_GODFAVOR.toString())) {
                 GodFavorCommand godFavorCommand = new GodFavorCommand(input);
                 godFavorCommand.pick();

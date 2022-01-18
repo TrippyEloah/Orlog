@@ -19,6 +19,8 @@ public class GodFavorCommand {
 
     /**
      * Creats an object wtich picks a godfavor.
+     *
+     * @param command the command given
      * */
     public GodFavorCommand(String command) {
         this.command = command;
@@ -66,8 +68,4 @@ public class GodFavorCommand {
         }
         return null;
     }
-
-
-
-
 }

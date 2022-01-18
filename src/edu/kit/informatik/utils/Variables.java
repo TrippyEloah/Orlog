@@ -1,6 +1,5 @@
 package edu.kit.informatik.utils;
 
-import edu.kit.informatik.game.Phase;
 import edu.kit.informatik.game.Player;
 import edu.kit.informatik.game.godfavor.GodFavor;
 import edu.kit.informatik.game.items.Item;

@@ -67,7 +67,7 @@ public class GameCoordinator {
             Variables.player2.setLifes(lifes);
         }
         if (args[3].matches("[0-9]*") ) {
-            int godfavor = Integer.parseInt(args[2]);
+            int godfavor = Integer.parseInt(args[3]);
             if (godfavor < 0) {
                 Terminal.print(Errors.ERROR_GODPOWER_TO_LOW.toString());
                 Variables.setRunning(false);

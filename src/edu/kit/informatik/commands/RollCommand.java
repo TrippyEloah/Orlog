@@ -19,6 +19,8 @@ public class RollCommand {
 
     /**
      * Creats an object to roll the dice.
+     *
+     * @param dice the given dice
      * */
     public RollCommand(String dice) {
         this.dice = dice;
@@ -48,6 +50,4 @@ public class RollCommand {
     private static String[] splitDice(String dice) {
         return dice.split(";");
     }
-
-
 }

@@ -31,16 +31,11 @@ public class EvaluateCommand {
      * Evaluets the game.
      * */
     public void evaluate() {
-        if (Main.coordinator.getCurrentPhase() == Phase.EXECUTE_PHASE) {
-            evalLifes();
-            evalGodPower();
-            evalGodFavor();
-            evalItems();
-            finishRound();
+        evalLifes();
+        evalGodPower();
+        evalGodFavor();
+        evalItems();
 
-        } else {
-            Terminal.print(Errors.ERROR_CANT_EVALUATE.toString());
-        }
     }
 
     private static void evalGodFavor() {
@@ -144,8 +139,4 @@ public class EvaluateCommand {
         Main.coordinator.setCurrentPhase(Phase.DICE_PHASE);
         Main.coordinator.setCurrentPlayer(Variables.player1);
     }
-
-
-
-
 }

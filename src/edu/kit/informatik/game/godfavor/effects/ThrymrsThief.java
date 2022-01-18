@@ -22,7 +22,7 @@ public class ThrymrsThief {
     public static void play(Player owner) {
         if (owner.getName().equals(Variables.player1.getName())) {
             GodFavor player1 = Variables.player1.getGodFavor();
-            if(Variables.player2.getGodFavor() != null) {
+            if (Variables.player2.getGodFavor() != null) {
                 GodFavor help = Variables.player2.getGodFavor();
                 int lvl = help.getLevel() - player1.getLevel();
                 if (lvl != 0) {
@@ -39,7 +39,7 @@ public class ThrymrsThief {
             Variables.player1.setGodpower(Variables.player1.getGodpower() - (player1.getCosts()));
         } else {
             GodFavor player2 = Variables.player2.getGodFavor();
-            if(Variables.player1.getGodFavor() != null) {
+            if (Variables.player1.getGodFavor() != null) {
                 GodFavor help = Variables.player1.getGodFavor();
                 int lvl = help.getLevel() - player2.getLevel();
                 if (lvl != 0) {

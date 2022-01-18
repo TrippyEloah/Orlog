@@ -1,6 +1,5 @@
 package edu.kit.informatik.commands;
 
-import edu.kit.informatik.game.GameCoordinator;
 import edu.kit.informatik.game.Phase;
 import edu.kit.informatik.main.Main;
 import edu.kit.informatik.utils.Terminal;
