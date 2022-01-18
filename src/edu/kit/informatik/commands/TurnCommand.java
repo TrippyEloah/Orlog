@@ -36,8 +36,6 @@ public class TurnCommand {
     private static void nextPhase() {
         if (Main.coordinator.getCurrentPhase() == Phase.DICE_PHASE) {
             Main.coordinator.setCurrentPhase(Phase.GODFAVOR_PHASE);
-        } else if (Main.coordinator.getCurrentPhase() == Phase.GODFAVOR_PHASE) {
-            Main.coordinator.setCurrentPhase(Phase.EXECUTE_PHASE);
         } else {
             Main.coordinator.setCurrentPhase(Phase.DICE_PHASE);
         }
